@@ -43,15 +43,6 @@ test = pd.DataFrame(df['Close'][train_ind:])
 scaler = MinMaxScaler()
 train_scaled = scaler.fit_transform(train)
 
-x_train = []
-y_train = []
-
-for i in range(100,train_scaled.shape[0]):
-    x_train.append(train_scaled[i-100:i])
-    y_train.append(train_scaled[i,0])
-
-x_train , y_train = np.array(x_train), np.array(y_train)
-
 model = load_model('keras_model.h5')
 
 last_100_Days=train.tail(100)
